@@ -1,0 +1,14 @@
+id: 96e30254-8134-47db-a750-b571c789e1bc
+pipeline_type: WORKSPACE
+name: pipeline1
+libraries:
+  - file:
+      path: ../../src/pipeline_1/transformations/**
+schema: default
+continuous: false
+development: false
+photon: true
+channel: CURRENT
+catalog: prodamar
+serverless: true
+root_path: ../../src/pipeline_1

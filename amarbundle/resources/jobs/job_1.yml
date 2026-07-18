@@ -1,0 +1,17 @@
+resources:
+  jobs:
+    job1:
+      name: job1
+      tasks:
+        - task_key: Ingestion
+          notebook_task:
+            notebook_path: ../../src/notebook/dataingestion.ipynb
+            source: WORKSPACE
+          environment_key: Ingestion_environment
+      queue:
+        enabled: true
+      environments:
+        - environment_key: Ingestion_environment
+          spec:
+            environment_version: "5"
+      performance_target: PERFORMANCE_OPTIMIZED

@@ -1,0 +1,47 @@
+bundle:
+  name: amarbundle
+  uuid: bcea288a-c174-4ddb-a874-2881238524fd
+
+include:
+  - resources/*.yml
+
+
+
+# Variable declarations. These variables are assigned in the dev/prod targets below.
+variables:
+  catalog:
+    description: The catalog to use
+  schema:
+    description: The schema to use
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: dbc-c55b696d-8e3e.cloud.databricks.com
+      # root_path: /Workspace/DEV/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      catalog: prodamar
+      schema: ${workspace.current_user.short_name}
+    permissions:
+      - group_name: developers
+        level: CAN_MANAGE
+    presets:
+      name_prefix: ${workspace.current_user.short_name}
+      source_linked_deployment: false
+
+
+  prod:
+    mode: production
+    workspace:
+      host: dbc-c55b696d-8e3e.cloud.databricks.com
+      root_path: /Workspace/PROD/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      catalog: prodamar
+      schema: dev
+    permissions:
+      - user_name: amar.kaliaperumal@gmail.com
+        level: CAN_MANAGE
+      - group_name: admins
+        level: CAN_MANAGE
