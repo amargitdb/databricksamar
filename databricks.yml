@@ -1,0 +1,29 @@
+bundle:
+  name: DABDemo
+
+include:
+  - src/*.yml
+  - src/env/*.yml
+  - resources/*.yml
+  - resources/jobs/*.yml
+  - resources/pipelines.*.yml
+  - resources/schemas.*.yml
+
+
+permissions:
+  - group_name: revision
+    level: CAN_MANAGE
+  
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-c55b696d-8e3e.cloud.databricks.com/editor/files/3221186313962783?o=7474651369938666&contextId=folder%3A3221186313962698/
+
+
+  qa:
+    default: false
+    workspace:
+      host: https://dbc-c55b696d-8e3e.cloud.databricks.com/editor/files/3221186313962783?o=7474651369938666&contextId=folder%3A3221186313962698/

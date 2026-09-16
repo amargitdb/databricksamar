@@ -1,0 +1,17 @@
+resources:
+  jobs:
+    DAb_Demo_Job_V2:
+      name: DAb_Demo_Job_V2
+      tasks:
+        - task_key: Demo_DAB_Notebook
+          notebook_task:
+            notebook_path: ../notebooks/demo_repo.py
+            source: WORKSPACE
+          environment_key: Default
+      queue:
+        enabled: true
+      environments:
+        - environment_key: Default
+          spec:
+            environment_version: "5"
+      performance_target: PERFORMANCE_OPTIMIZED
